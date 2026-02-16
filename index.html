@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>woodssky — woob</title>
+  <meta name="description" content="woodssky — woob" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <h1 id="repo-name">woodssky</h1>
+        <p id="repo-desc">woob</p>
+      </div>
+      <nav>
+        <a id="github-link" class="btn" href="https://github.com/aguscraft/woodssky" target="_blank" rel="noopener">Lihat di GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Selamat datang di woodssky</h2>
+      <p>Proyek sederhana — deskripsi singkat tampil di atas. Scroll ke bawah untuk detail dan komposisi bahasa kode.</p>
+    </section>
+
+    <section id="about" class="panel">
+      <h3>Tentang</h3>
+      <p id="about-text">Deskripsi: <strong>woob</strong></p>
+      <ul class="meta-list">
+        <li><strong>Repository:</strong> <a href="https://github.com/aguscraft/woodssky" target="_blank" rel="noopener">aguscraft/woodssky</a></li>
+        <li><strong>Owner:</strong> aguscraft</li>
+      </ul>
+    </section>
+
+    <section id="languages" class="panel">
+      <h3>Komposisi Bahasa (GitHub)</h3>
+      <div id="lang-list" class="lang-list">
+        <p class="muted">Memuat data bahasa dari GitHub API...</p>
+      </div>
+    </section>
+
+    <section id="usage" class="panel">
+      <h3>Cara Menggunakan / Deploy</h3>
+      <pre><code>git clone https://github.com/aguscraft/woodssky.git
+cd woodssky
+# edit isi situs, lalu commit & push
+</code></pre>
+      <p>Untuk deploy cepat ke GitHub Pages: aktifkan Pages di settings atau gunakan workflow GitHub Actions (sudah saya sertakan file workflow).</p>
+    </section>
+
+    <section id="contact" class="panel">
+      <h3>Kontak</h3>
+      <p>Owner: <strong>aguscraft</strong> — buka halaman GitHub untuk issue / PR.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2026 woodssky — dibuat otomatis</small>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot AI - GitHub Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .message {
+            margin: 15px 0;
+            padding: 12px 18px;
+            border-radius: 20px;
+            max-width: 70%;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user {
+            background: #4a90e2;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .bot {
+            background: white;
+            color: #333;
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .input-area {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        
+        input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #4a90e2;
+        }
+        
+        button {
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        button:hover {
+            background: #357abd;
+            transform: scale(1.05);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4a90e2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Chatbot AI</h1>
+            <p>Ngobrol pake Hugging Face + GitHub Pages</p>
+        </div>
+        
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                Halo! Aku chatbot AI. Tanya apa aja ya! 😊
+            </div>
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Ketik pesan..." autocomplete="off">
+            <button onclick="sendMessage()" id="sendBtn">➤</button>
+        </div>
+        
+        <div class="footer">
+            🚀 Gratis hosting di GitHub Pages | AI dari Hugging Face
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
+        // GANTI TOKEN INI DENGAN TOKEN HUGGING FACE KAMU!
+        const HF_TOKEN = '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' // <-- GANTI INI!
+        
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+            
+            // Tampilkan pesan user
+            addMessage(message, 'user');
+            userInput.value = '';
+            
+            // Tampilkan loading
+            const loadingId = showLoading();
+            
+            try {
+                // Panggil API Hugging Face
+                const response = await fetch(
+                    "https://api-inference.huggingface.co/models/microsoft/DialoGPT-small",
+                    {
+                        headers: { 
+                            "Authorization": `Bearer ${HF_TOKEN}`,
+                            "Content-Type": "application/json"
+                        },
+                        method: "POST",
+                        body: JSON.stringify({ 
+                            inputs: message,
+                            parameters: {
+                                max_length: 100,
+                                temperature: 0.8
+                            }
+                        }),
+                    }
+                );
+                
+                // Hapus loading
+                removeLoading(loadingId);
+                
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                let botResponse = result[0]?.generated_text || "Maaf, ada error";
+                
+                // Hapus pesan user dari response biar gak dobel
+                if (botResponse.startsWith(message)) {
+                    botResponse = botResponse.slice(message.length).trim();
+                }
+                
+                addMessage(botResponse, 'bot');
+                
+            } catch (error) {
+                removeLoading(loadingId);
+                addMessage("Error: " + error.message, 'bot');
+                console.error(error);
+            }
+        }
+        
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+            div.textContent = text;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        function showLoading() {
+            const id = Date.now();
+            const div = document.createElement('div');
+            div.id = `loading-${id}`;
+            div.className = 'message bot';
+            div.innerHTML = '<div class="loading"></div>';
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return id;
+        }
+        
+        function removeLoading(id) {
+            const loading = document.getElementById(`loading-${id}`);
+            if (loading) loading.remove();
+        }
+        
+        // Enter untuk kirim
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
